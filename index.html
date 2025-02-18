@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" type="text/css">
+</head>
+<body>
+    <input type="file" id="excelFile">
+    <select id="robotSelect" multiple>
+    </select>
+    <select id="msOrCyc" multiple>
+        <option>ms</option>
+        <option>cyc</option>
+    </select>
+
+    <pre id="result"></pre>
+    <table>
+        <tr>
+            <th></th>
+            <th>予圧(ms)</th>
+            <th>可圧力(N)</th>
+            <th>アップスロープ(ms)</th>
+            <th>通電時間(ms)</th>
+            <th>ダウンスロープ(ms)</th>
+            <th>電流(KA)</th>
+            <th>インターバル(ms)</th>
+        </tr>
+        <tr>
+            <th>プレ通電</th>
+            <td><input type="number" id="compression" value=0 /></td>
+            <td><input type="number" id="allowablePressurePr" value=0 /></td>
+            <td><input type="number" id="upSlopePr" value=0 /></td>
+            <td><input type="number" id="energizationTimePr" value=0 /></td>
+            <td><input type="number" id="downSlope" value=0 /></td>
+            <td><input type="number" id="electricCurrentPr" value=0 /></td>
+            <td><input type="number" id="interval" value=0 /></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th></th>
+            <th>可圧力(N)</th>
+            <th>スロープ(ms)</th>
+            <th>通電時間(ms)</th>
+            <th>電流(KA)</th>
+        </tr>
+        <tr>
+            <th>本通電1</th>
+            <td><input type="number" id="allowablePressure1" value=0 /></td>
+            <td><input type="number" id="slope1" value=0 /></td>
+            <td><input type="number" id="energizationTime1" value=0 /></td>
+            <td><input type="number" id="electricCurrent1" value=0 /></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th></th>
+            <th>スロープ(ms)</th>
+            <th>通電時間(ms)</th>
+            <th>電流(KA)</th>
+        </tr>
+        <tr>
+            <th>本通電2</th>
+            <td><input type="number" id="slope2" value=0 /></td>
+            <td><input type="number" id="energizationTime2" value=0 /></td>
+            <td><input type="number" id="electricCurrent2" value=0 /></td>
+        </tr>
+        <tr>
+            <th>本通電3</th>
+            <td><input type="number" id="slope3" value=0 /></td>
+            <td><input type="number" id="energizationTime3" value=0 /></td>
+            <td><input type="number" id="electricCurrent3" value=0 /></td>
+        </tr>
+        <tr>
+            <th>本通電4</th>
+            <td><input type="number" id="slope4" value=0 /></td>
+            <td><input type="number" id="energizationTime4" value=0 /></td>
+            <td><input type="number" id="electricCurrent4" value=0 /></td>
+        </tr>
+        <tr>
+            <th>本通電5</th>
+            <td><input type="number" id="slope5" value=0 /></td>
+            <td><input type="number" id="energizationTime5" value=0 /></td>
+            <td><input type="number" id="electricCurrent5" value=0 /></td>
+        </tr>
+        <tr>
+            <th>本通電6</th>
+            <td><input type="number" id="slope6" value=0 /></td>
+            <td><input type="number" id="energizationTime6" value=0 /></td>
+            <td><input type="number" id="electricCurrent6" value=0 /></td>
+        </tr>
+        <tr>
+            <th>本通電7</th>
+            <td><input type="number" id="slope7" value=0 /></td>
+            <td><input type="number" id="energizationTime7" value=0 /></td>
+            <td><input type="number" id="electricCurrent7" value=0 /></td>
+        </tr>
+        <tr>
+            <th>本通電8</th>
+            <td><input type="number" id="slope8" value=0 /></td>
+            <td><input type="number" id="energizationTime8" value=0 /></td>
+            <td><input type="number" id="electricCurrent8" value=0 /></td>
+        </tr>
+        <tr>
+            <th>本通電9</th>
+            <td><input type="number" id="slope9" value=0 /></td>
+            <td><input type="number" id="energizationTime9" value=0 /></td>
+            <td><input type="number" id="electricCurrent9" value=0 /></td>
+        </tr>
+        <tr>
+            <th>本通電10</th>
+            <td><input type="number" id="slope10" value=0 /></td>
+            <td><input type="number" id="energizationTime10" value=0 /></td>
+            <td><input type="number" id="electricCurrent10" value=0 /></td>
+        </tr>
+        <tr>
+            <th>本通電11</th>
+            <td><input type="number" id="slope11" value=0 /></td>
+            <td><input type="number" id="energizationTime11" value=0 /></td>
+            <td><input type="number" id="electricCurrent11" value=0 /></td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <th></th>
+            <th>ダウンスロープ(ms)</th>
+            <th>保持時間(ms)</th>
+        </tr>
+        <tr>
+            <th>共通</th>
+            <td><input type="number" id="downSlopeB" value=0 /></td>
+            <td><input type="number" id="retentionTime" value=0 /></td>
+        </tr>
+    </table>
+    <span>X軸</span>
+    <select id="xValue">
+        <option>小</option>
+        <option selected>中</option>
+        <option>大</option>
+    </select>
+    <span>Y軸</span>
+    <select id="yValue">
+        <option>小</option>
+        <option selected>中</option>
+        <option>大</option>
+    </select>
+    <p></p>
+    <canvas id="chart" height="400px" width="1000px"></canvas>
+    <canvas id="chartLine" height="400px" width="1000px"></canvas>
+    <p id="x"></p>
+
+    <script type="text/javascript" src="xlsx.mini.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

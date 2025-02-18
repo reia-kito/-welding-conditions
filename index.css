@@ -1,0 +1,18 @@
+/* body {
+  /* background-color: gray; */
+/* } */
+
+
+#chart {
+  position: absolute;
+  left: 60px;
+  background-color:white;
+  transform: scale(1, -1);
+}
+
+#chartLine {
+  position: relative;
+  left: 50px;
+  transform: scale(1, -1);
+}
+
