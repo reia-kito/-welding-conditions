@@ -1,8 +1,3 @@
-/* body {
-  /* background-color: gray; */
-/* } */
-
-
 #chart {
   position: absolute;
   left: 60px;
@@ -15,4 +10,15 @@
   left: 50px;
   transform: scale(1, -1);
 }
+
+#chartText {
+  position: absolute;
+  left: 50px;
+}
+
+#innerX {
+  position: relative;
+  left: 50px;
+}
+
 
