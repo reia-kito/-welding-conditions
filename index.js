@@ -55,10 +55,10 @@ document.getElementById("excelFile").addEventListener("change",(e) => loadFile(e
 
 
 //セレクトボックス
-function selectBox(e) {
-    excelData.forEach((e) => {
+function selectBox() {
+    excelData.forEach((e,i) => {
         const option = document.createElement('option');
-        option.innerText = `${e["ロボット"]} ${e["Prg"]} ${e["打点"]}`;
+        option.innerText = `${i} ・ ${e["ロボット"]} ${e["Prg"]} ${e["打点"]}`;
         document.getElementById("robotSelect").appendChild(option);
     })
 }
@@ -142,6 +142,7 @@ document.getElementById("msOrCyc").addEventListener('change', e => {
     canvasClear();
     draw(index);
 });
+
 
 function draw(index) {
 
@@ -349,7 +350,53 @@ let prMax = Number(upSlopePr) > Number(downSlope) ? Number(upSlopePr) : Number(d
             Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5) + Number(slope6) + Number(energizationTime6) + Number(slope7) + Number(energizationTime7) + Number(slope8) + Number(energizationTime8) + Number(slope9) + Number(energizationTime9) + Number(slope10) + Number(energizationTime10) + Number(slope11) + Number(energizationTime11) + Number(downSlopeB),//43共通
             Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5) + Number(slope6) + Number(energizationTime6) + Number(slope7) + Number(energizationTime7) + Number(slope8) + Number(energizationTime8) + Number(slope9) + Number(energizationTime9) + Number(slope10) + Number(energizationTime10) + Number(slope11) + Number(energizationTime11) + Number(downSlopeB) + Number(retentionTime),//44共通
         ];
-        
+        const msCopy =  [
+            0,//1
+            Number(compression),//2
+            Number(compression),//3
+            Number(compression) + Number(prMax),//4
+            Number(compression) + Number(prMax) + Number(energizationTimePr),//5
+            Number(compression) + Number(prMax) + Number(energizationTimePr),//6
+            Number(compression) + Number(prMax) + Number(energizationTimePr),//7
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval),//8
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval),//9
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1),//10
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1),//11
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1),//12
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2),//13
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2),//14
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2),//15
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3),//16
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3),//17
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3),//18
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4),//19
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4),//20
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4),//21
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5),//22
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5),//23
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5),//24
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5) + Number(slope6),//25
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5) + Number(slope6) + Number(energizationTime6),//26
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5) + Number(slope6) + Number(energizationTime6),//27
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5) + Number(slope6) + Number(energizationTime6) + Number(slope7),//28
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5) + Number(slope6) + Number(energizationTime6) + Number(slope7) + Number(energizationTime7),//29
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5) + Number(slope6) + Number(energizationTime6) + Number(slope7) + Number(energizationTime7),//30
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5) + Number(slope6) + Number(energizationTime6) + Number(slope7) + Number(energizationTime7) + Number(slope8),//31
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5) + Number(slope6) + Number(energizationTime6) + Number(slope7) + Number(energizationTime7) + Number(slope8) + Number(energizationTime8),//32
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5) + Number(slope6) + Number(energizationTime6) + Number(slope7) + Number(energizationTime7) + Number(slope8) + Number(energizationTime8),//33
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5) + Number(slope6) + Number(energizationTime6) + Number(slope7) + Number(energizationTime7) + Number(slope8) + Number(energizationTime8) + Number(slope9),//34
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5) + Number(slope6) + Number(energizationTime6) + Number(slope7) + Number(energizationTime7) + Number(slope8) + Number(energizationTime8) + Number(slope9) + Number(energizationTime9),//35
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5) + Number(slope6) + Number(energizationTime6) + Number(slope7) + Number(energizationTime7) + Number(slope8) + Number(energizationTime8) + Number(slope9) + Number(energizationTime9),//36
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5) + Number(slope6) + Number(energizationTime6) + Number(slope7) + Number(energizationTime7) + Number(slope8) + Number(energizationTime8) + Number(slope9) + Number(energizationTime9) + Number(slope10),//37
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5) + Number(slope6) + Number(energizationTime6) + Number(slope7) + Number(energizationTime7) + Number(slope8) + Number(energizationTime8) + Number(slope9) + Number(energizationTime9) + Number(slope10) + Number(energizationTime10),//38
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5) + Number(slope6) + Number(energizationTime6) + Number(slope7) + Number(energizationTime7) + Number(slope8) + Number(energizationTime8) + Number(slope9) + Number(energizationTime9) + Number(slope10) + Number(energizationTime10),//39
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5) + Number(slope6) + Number(energizationTime6) + Number(slope7) + Number(energizationTime7) + Number(slope8) + Number(energizationTime8) + Number(slope9) + Number(energizationTime9) + Number(slope10) + Number(energizationTime10) + Number(slope11),//40
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5) + Number(slope6) + Number(energizationTime6) + Number(slope7) + Number(energizationTime7) + Number(slope8) + Number(energizationTime8) + Number(slope9) + Number(energizationTime9) + Number(slope10) + Number(energizationTime10) + Number(slope11) + Number(energizationTime11),//41
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5) + Number(slope6) + Number(energizationTime6) + Number(slope7) + Number(energizationTime7) + Number(slope8) + Number(energizationTime8) + Number(slope9) + Number(energizationTime9) + Number(slope10) + Number(energizationTime10) + Number(slope11) + Number(energizationTime11),//42
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5) + Number(slope6) + Number(energizationTime6) + Number(slope7) + Number(energizationTime7) + Number(slope8) + Number(energizationTime8) + Number(slope9) + Number(energizationTime9) + Number(slope10) + Number(energizationTime10) + Number(slope11) + Number(energizationTime11) + Number(downSlopeB),//43共通
+            Number(compression) + Number(prMax) + Number(energizationTimePr) + Number(interval) + Number(slope1) + Number(energizationTime1)+ Number(slope2) + Number(energizationTime2) + Number(slope3) + Number(energizationTime3) + Number(slope4) + Number(energizationTime4) + Number(slope5) + Number(energizationTime5) + Number(slope6) + Number(energizationTime6) + Number(slope7) + Number(energizationTime7) + Number(slope8) + Number(energizationTime8) + Number(slope9) + Number(energizationTime9) + Number(slope10) + Number(energizationTime10) + Number(slope11) + Number(energizationTime11) + Number(downSlopeB) + Number(retentionTime),//44共通
+        ];
+
         if(flag === "cyc") {
             prMax = cyc[Number(upSlopePr)] > cyc[Number(downSlope)] ? cyc[Number(upSlopePr)] : cyc[Number(downSlope)];
             ms = [
@@ -451,7 +498,7 @@ let prMax = Number(upSlopePr) > Number(downSlope) ? Number(upSlopePr) : Number(d
     //縦線
     verticalDraw(ms, kA);
     //x軸表示
-    xms(ms);
+    xms(ms, msCopy);
 }
 
 //中身描写
@@ -460,16 +507,13 @@ function canvasDraw(ms, kA) {
     ctx3.beginPath();
 
     for(let i = 0; i < ms.length; i++) {
-        
         ctx.strokeStyle = "#4feff1";
-        // ctx.strokeStyle = "#6d8b8c";
         ctx.moveTo(ms[i] * stepX, kA[i] * stepY);//1
         ctx.lineTo(ms[i + 1] * stepX, kA[i + 1] * stepY);
     }
     
     for(let i = 1; i < ms.length; i = i + 3) {
         ctx3.font = "15px serif";
-        // ctx3.fillStyle = "red";    
         // ctx3.fillText(`(${ms[i]},${kA[i]})`, ms[i] * stepX, 395 - (kA[i] * stepY));
         if(kA[i] !== 0) ctx3.fillText(kA[i], ms[i] * stepX, 395 - (kA[i] * stepY));
         
@@ -499,8 +543,9 @@ function canvasClear() {
 }
 
 //x軸表示
-function xms(ms) {
+function xms(ms, msCopy) {
     const xArray = Array.from(new Set(ms)).filter(e => e === e);
+    const msCopyArray = Array.from(new Set(msCopy)).filter(e => e === e);
     let toggle = -30;
     document.getElementById("innerX").remove();
 
@@ -510,7 +555,7 @@ function xms(ms) {
 
     xArray.forEach((e,i) => {
         const value = document.createElement("h6");
-        value.innerText = e;
+        flag === "cyc" ? value.innerText = msCopyArray[i] : value.innerText = e;
         value.setAttribute("id", i);
         document.getElementById("innerX").appendChild(value);
         document.getElementById(i).style.position = "absolute";
@@ -525,6 +570,31 @@ function xms(ms) {
         document.getElementById(i).style.top =  toggle + "px";
     }
     });
+
     toggle = 0;
 }
+
+//table表示非表示
+function tableHidden() {
+    const table = document.getElementById("tableDiv");
+    // table.style.display === "none" || table.style.display === "" ? table.style.display = "block" : table.style.display = "none";
+    table.style.display === "block" || table.style.display === "" ? table.style.display = "none" : table.style.display = "block";
+}
+
+document.getElementById("hiddenButton").addEventListener('click',tableHidden);
+
+
+// function a() {
+//     const index = document.getElementById("robotSelect").selectedIndex;
+//     // draw(index)
+// }
+
+//input要素変更後再描画
+Array.from(document.getElementsByClassName("changeInput")).forEach((e,i) => e.addEventListener("change" , () => {
+    Array.from(document.getElementsByClassName("changeInput"))[i].value = e.value;
+    const index = document.getElementById("robotSelect").selectedIndex;
+    excelData[index][e.name] = Number(e.value);
+    canvasClear();
+    draw(index)
+}));
 
