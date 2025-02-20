@@ -21,4 +21,8 @@
   left: 50px;
 }
 
+#tableDiv {
+  border: solid 1px;
+  display: block;
+}
 
