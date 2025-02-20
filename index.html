@@ -7,15 +7,6 @@
     <link rel="stylesheet" href="index.css" type="text/css">
 </head>
 <body>
-    <input type="file" id="excelFile">
-    <select id="robotSelect" multiple>
-    </select>
-    <select id="msOrCyc" multiple>
-        <option>ms</option>
-        <option>cyc</option>
-    </select>
-
-    <pre id="result"></pre>
     <table>
         <tr>
             <th></th>
@@ -134,7 +125,7 @@
             <td><input type="number" id="retentionTime" value=0 /></td>
         </tr>
     </table>
-    <span>X軸</span>
+    <!-- <span>X軸</span>
     <select id="xValue">
         <option>小</option>
         <option selected>中</option>
@@ -145,12 +136,23 @@
         <option>小</option>
         <option selected>中</option>
         <option>大</option>
+    </select> -->
+    <input type="file" id="excelFile">※140行まで
+    <select id="robotSelect">
     </select>
-    <p></p>
-    <canvas id="chart" height="400px" width="1000px"></canvas>
-    <canvas id="chartLine" height="400px" width="1000px"></canvas>
-    <p id="x"></p>
+    <select id="msOrCyc">
+        <option selected>ms</option>
+        <option>cyc</option>
+    </select>
+    <a href="原紙.xlsx" download="原紙.xlsx">原紙ダウンロード</a>
 
+    <p></p>
+    <canvas id="chart" height="400px" width="1500px"></canvas>
+    <canvas id="chartLine" height="400px" width="1500px"></canvas>
+    <canvas id="chartText" height="400px" width="1500px"></canvas>
+    <div id="outerX">
+        <p id="innerX"></p>
+    </div>
     <script type="text/javascript" src="xlsx.mini.min.js"></script>
     <script src="index.js"></script>
 </body>
