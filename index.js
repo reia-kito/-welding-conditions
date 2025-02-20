@@ -461,14 +461,15 @@ function canvasDraw(ms, kA) {
 
     for(let i = 0; i < ms.length; i++) {
         
-        ctx.strokeStyle = "#6d8b8c";
+        ctx.strokeStyle = "#4feff1";
+        // ctx.strokeStyle = "#6d8b8c";
         ctx.moveTo(ms[i] * stepX, kA[i] * stepY);//1
         ctx.lineTo(ms[i + 1] * stepX, kA[i + 1] * stepY);
     }
     
     for(let i = 1; i < ms.length; i = i + 3) {
         ctx3.font = "15px serif";
-        ctx3.fillStyle = "red";    
+        // ctx3.fillStyle = "red";    
         // ctx3.fillText(`(${ms[i]},${kA[i]})`, ms[i] * stepX, 395 - (kA[i] * stepY));
         if(kA[i] !== 0) ctx3.fillText(kA[i], ms[i] * stepX, 395 - (kA[i] * stepY));
         
@@ -514,6 +515,7 @@ function xms(ms) {
         document.getElementById("innerX").appendChild(value);
         document.getElementById(i).style.position = "absolute";
         document.getElementById(i).style.left = (e * stepX) + "px";
+        document.getElementById(i).style.font = "15px serif";
     
     if(xArray[i] < xArray[i - 1] + 20) {
         toggle = toggle + 20;
