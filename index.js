@@ -26,10 +26,10 @@ const ctx3 = chartText.getContext("2d");
 const X = XLSX;
 const excelData = [];
 
+
 const loadFile = e => {
     let files = e.target.files;
     let f = files[0];
-
     let reader = new FileReader();
     reader.onload = function (e) {
         let data = e.target.result;
@@ -39,7 +39,7 @@ const loadFile = e => {
             type: 'base64',
             cellDates: true,
         });
-
+        
         let output = "";
         output = to_json(wb);
         for(const data of output["入力欄"]){
@@ -50,10 +50,8 @@ const loadFile = e => {
 
     reader.readAsArrayBuffer(f);
 }
-
 //Excelファイル読み込みイベント
 document.getElementById("excelFile").addEventListener("change",(e) => loadFile(e));
-
 
 //セレクトボックス ロボットPrg打点の組み合わせのドロップダウン
 const selectBox = () => {
@@ -116,7 +114,6 @@ document.getElementById("msOrCyc").addEventListener('change', e => {
     canvasClear();
     draw(index);
 });
-
 
 const draw = index => {
 
@@ -464,6 +461,79 @@ Array.from(document.getElementsByClassName("changeInput")).forEach((e,i) => e.ad
     const index = document.getElementById("robotSelect").selectedIndex;
     excelData[index][e.name] = Number(e.value);
     canvasClear();
-    draw(index)
+    draw(index);
+    duplicationSearch(index);
 }));
 
+//変更後保存
+const newData = () => {
+    console.log(excelData)
+    const ws = XLSX.utils.json_to_sheet(excelData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "入力欄");
+    XLSX.writeFile(wb, "test.xlsx");
+}
+document.getElementById("newData").addEventListener('click', newData);
+
+//変更後被りがあるかcheck
+const duplicationSearch = index => {
+    document.getElementById("innerDuplicationSearchMessage").remove();
+
+    const p = document.createElement("p");
+    p.setAttribute("id", "innerDuplicationSearchMessage");
+    document.getElementById("outerDuplicationSearchMessage").appendChild(p);
+
+    excelData.forEach((e,i) => {
+        if(e["プレ通電予圧"] === excelData[index]["プレ通電予圧"] &&
+            e["プレ通電加圧力(N)"] === excelData[index]["プレ通電加圧力(N)"] &&
+            e["プレ通電アップスロープ"] === excelData[index]["プレ通電アップスロープ"] &&
+            e["プレ通電通電時間"] === excelData[index]["プレ通電通電時間"] &&
+            e["プレ通電ダウンスロープ"] === excelData[index]["プレ通電ダウンスロープ"] &&
+            e["プレ通電電流(KA)"] === excelData[index]["プレ通電電流(KA)"] &&
+            e["プレ通電インターバル"] === excelData[index]["プレ通電インターバル"] &&
+            e["本通電1加圧力(N)"] === excelData[index]["本通電1加圧力(N)"] &&
+            e["本通電1アップスロープ"] === excelData[index]["本通電1アップスロープ"] &&
+            e["本通電1通電時間"] === excelData[index]["本通電1通電時間"] &&
+            e["本通電1電流(kA)"] === excelData[index]["本通電1電流(kA)"] &&
+            e["スロープ本通電2"] === excelData[index]["スロープ本通電2"] &&
+            e["本通電2通電時間"] === excelData[index]["本通電2通電時間"] &&
+            e["本通電2電流(kA)"] === excelData[index]["本通電2電流(kA)"] &&
+            e["本通電3スロープ"] === excelData[index]["本通電3スロープ"] &&
+            e["本通電3通電時間"] === excelData[index]["本通電3通電時間"] &&
+            e["本通電3電流(kA)"] === excelData[index]["本通電3電流(kA)"] &&
+            e["本通電4スロープ"] === excelData[index]["本通電4スロープ"] &&
+            e["本通電4通電時間"] === excelData[index]["本通電4通電時間"] &&
+            e["本通電4電流(kA)"] === excelData[index]["本通電4電流(kA)"] &&
+            e["本通電5スロープ"] === excelData[index]["本通電5スロープ"] &&
+            e["本通電5通電時間"] === excelData[index]["本通電5通電時間"] &&
+            e["本通電5電流(kA)"] === excelData[index]["本通電5電流(kA)"] &&
+            e["本通電6スロープ"] === excelData[index]["本通電6スロープ"] &&
+            e["本通電6通電時間"] === excelData[index]["本通電6通電時間"] &&
+            e["本通電6電流(kA)"] === excelData[index]["本通電6電流(kA)"] &&
+            e["本通電7スロープ"] === excelData[index]["本通電7スロープ"] &&
+            e["本通電7通電時間"] === excelData[index]["本通電7通電時間"] &&
+            e["本通電7電流(kA)"] === excelData[index]["本通電7電流(kA)"] &&
+            e["本通電8スロープ"] === excelData[index]["本通電8スロープ"] &&
+            e["本通電8通電時間"] === excelData[index]["本通電8通電時間"] &&
+            e["本通電8電流(kA)"] === excelData[index]["本通電8電流(kA)"] &&
+            e["本通電9スロープ"] === excelData[index]["本通電9スロープ"] &&
+            e["本通電9通電時間"] === excelData[index]["本通電9通電時間"] &&
+            e["本通電9電流(kA)"] === excelData[index]["本通電9電流(kA)"] &&
+            e["本通電10スロープ"] === excelData[index]["本通電10スロープ"] &&
+            e["本通電10通電時間"] === excelData[index]["本通電10通電時間"] &&
+            e["本通電10電流(kA)"] === excelData[index]["本通電10電流(kA)"] &&
+            e["本通電11スロープ"] === excelData[index]["本通電11スロープ"] &&
+            e["本通電11通電時間"] === excelData[index]["本通電11通電時間"] &&
+            e["本通電11電流(kA)"] === excelData[index]["本通電11電流(kA)"] &&
+            e["共通ダウンスロープ"] === excelData[index]["共通ダウンスロープ"] &&
+            e["共通保持時間"] === excelData[index]["共通保持時間"] &&
+            i !== index
+) {
+
+        const value = document.createElement("h4");
+        value.setAttribute("id", i);
+        value.innerText = `条件の重複があります ${e["ロボット"]} ${e["Prg"]} ${e["打点"]}`;
+        document.getElementById("innerDuplicationSearchMessage").appendChild(value);
+        }
+})
+}
